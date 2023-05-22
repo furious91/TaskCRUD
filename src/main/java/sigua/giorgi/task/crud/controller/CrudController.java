@@ -1,9 +1,12 @@
 package sigua.giorgi.task.crud.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import sigua.giorgi.task.crud.model.request.Applicant;
+import sigua.giorgi.task.crud.model.dto.ApplicantBaseDTO;
+import sigua.giorgi.task.crud.model.dto.ApplicantDTO;
 import sigua.giorgi.task.crud.model.response.OperationResponse;
 import sigua.giorgi.task.crud.service.CrudService;
 import sigua.giorgi.task.crud.service.CsvGenerator;
@@ -24,20 +27,20 @@ public class CrudController {
 
     @PostMapping(value = "/applicant", consumes = "application/json", produces = "application/json")
     @ResponseBody
-    public OperationResponse createApplicant(@RequestBody Applicant applicant) {
-        return crudService.createApplicant(applicant);
+    public ResponseEntity<OperationResponse> createApplicant( @Valid @RequestBody ApplicantBaseDTO applicantBaseDTO) {
+        return ResponseEntity.ok(crudService.createApplicant(applicantBaseDTO));
     }
 
     @GetMapping(value = "/applicant-by-id/{id}", produces = "application/json")
     @ResponseBody
-    public Applicant getApplicantById(@PathVariable long id) {
-        return crudService.getApplicantById(id);
+    public ResponseEntity<ApplicantDTO> getApplicantById(@PathVariable long id) {
+        return ResponseEntity.ok(crudService.getApplicantById(id));
     }
 
     @GetMapping(value = "/applicants", produces = "application/json")
     @ResponseBody
-    public List<Applicant> getAll() {
-        return crudService.getAll();
+    public ResponseEntity<List<ApplicantDTO>> getAll() {
+        return ResponseEntity.ok(crudService.getAll());
     }
 
     @GetMapping(value = "/applicants-csv")
@@ -49,14 +52,14 @@ public class CrudController {
 
     @PostMapping(value = "/applicant-update", consumes = "application/json", produces = "application/json")
     @ResponseBody
-    public OperationResponse updateApplicantProfession(@RequestBody Applicant applicant) {
-        return crudService.updateAplicantName(applicant);
+    public ResponseEntity<OperationResponse> updateApplicantProfession(@Valid @RequestBody ApplicantDTO applicantDTO) {
+        return ResponseEntity.ok(crudService.updateAplicantName(applicantDTO));
     }
 
     @DeleteMapping(value = "/applicants/{id}")
     @ResponseBody
-    public OperationResponse deleteApplicant(@PathVariable long id) {
-        return crudService.deleteApplicantyById(id);
+    public ResponseEntity<OperationResponse> deleteApplicant(@PathVariable long id) {
+        return ResponseEntity.ok(crudService.deleteApplicantyById(id));
     }
 
 

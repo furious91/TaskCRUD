@@ -1,7 +1,7 @@
 package sigua.giorgi.task.crud.model.mapper;
 
 import org.springframework.jdbc.core.RowMapper;
-import sigua.giorgi.task.crud.model.request.Applicant;
+import sigua.giorgi.task.crud.model.domain.Applicant;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
