@@ -12,7 +12,7 @@
 	<artifactId>TaskCRUD</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TaskCRUD</name>
-	<description>Giorgi Sigua Task CRDU</description>
+	<description>Giorgi Sigua Task CRDU(feature branch)</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
